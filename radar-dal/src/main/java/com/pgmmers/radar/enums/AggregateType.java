@@ -10,17 +10,23 @@ package com.pgmmers.radar.enums;
  *
  */
 public class AggregateType {
-    
+
+    // 总数
     public static final int COUNT = 1;
-    
+
+    // 不同项总数
     public static final int DISTINCT_COUNT = 2;
-    
+
+    // 和
     public static final int SUM = 3;
-    
+
+    // 平均值
     public static final int AVERAGE = 4;
-    
+
+    // 最大值
     public static final int MAX = 5;
-    
+
+    // 最小值
     public static final int MIN = 6;
     
     /**
