@@ -90,14 +90,12 @@ public class RiskAnalysisEngineServiceImpl implements RiskAnalysisEngineService 
             // 2. pre process
             Map<String, Object> preItemMap = antiFraudService.prepare(model.getId(), eventJson);
 
-            // 3. save to db
+            // 3. save to mongodb
             boolean isAllowDuplicate = false;
             if (isDuplicate != null && isDuplicate.equals("true")) {
                 isAllowDuplicate = true;
             }
-            entityService
-                    .save(model.getId(), eventJson.toJSONString(), JSON.toJSONString(preItemMap),
-                            isAllowDuplicate);
+            entityService.save(model.getId(), eventJson.toJSONString(), JSON.toJSONString(preItemMap), isAllowDuplicate);
 
             // 4. 执行分析
             context.put("fields", eventJson);
@@ -106,8 +104,7 @@ public class RiskAnalysisEngineServiceImpl implements RiskAnalysisEngineService 
 
             // 5. for elastic analysis
             Long eventTimeMillis = (Long) eventJson.get(model.getReferenceDate());
-            String timeStr = DateUtils
-                    .formatDate(new Date(eventTimeMillis), "yyyy-MM-dd'T'HH:mm:ssZ");
+            String timeStr = DateUtils.formatDate(new Date(eventTimeMillis), "yyyy-MM-dd'T'HH:mm:ssZ");
             preItemMap.put("radar_ref_datetime", timeStr);
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,7 +114,7 @@ public class RiskAnalysisEngineServiceImpl implements RiskAnalysisEngineService 
         // 缓存分析结果
         cacheService.saveAntiFraudResult(modelGuid, reqId, result);
 
-        // 保存事件信息和分析结果用于后续分析
+        // 保存事件信息和分析结果用于后续分析 save to es
         riskResultService.sendResult(modelGuid, reqId, JSON.toJSONString(context));
         // 返回分析结果
         return result;

@@ -1,13 +1,13 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/radar
+      uri: mongodb://192.168.67.132:27017/radar
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/radar?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+    url: jdbc:mysql://192.168.67.128:3306/radar?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
     username: root
-    password: 456132
+    password: 123456
   redis:
-    host: 127.0.0.1
+    host: 192.168.67.128
     password:
     timeout: 2000ms
     database: 1  #默认有16个db(集群模式用hash槽代替)，这里配置具体使用的db，默认是0
@@ -19,12 +19,12 @@ ip2region:
   db:
     path: d:/radar/ip2region.db #IP地址库文件
 elasticsearch:
-  ip: 127.0.0.1
+  ip: 192.168.67.132
   port: 9300
   pool-size: 5
   cluster:
     name: elasticsearch
-  url: http://127.0.0.1:9200
+  url: http://192.168.67.132:9200
   username:  # 不存在就留空
   password:  #
 sys:

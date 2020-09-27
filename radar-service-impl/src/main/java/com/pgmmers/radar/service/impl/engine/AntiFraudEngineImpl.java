@@ -105,10 +105,13 @@ public class AntiFraudEngineImpl implements AntiFraudEngine {
             String searchField = abs.getSearchField();
             searchField = searchField.replace("fields.", "").replace("preItems.", "");
 
+            // 统计类型
             Integer aggregateType = abs.getAggregateType();
 
+            //时间段类型
             Integer dateType = abs.getSearchIntervalType();
 
+            //时间段具体值
             Integer interval = abs.getSearchIntervalValue();
 
             String funcionField = abs.getFunctionField();
@@ -116,6 +119,7 @@ public class AntiFraudEngineImpl implements AntiFraudEngine {
 
             FieldType functionFieldType = null;
 
+            //数据校验
             String ruleScript = abs.getRuleScript();
 
             // 获取预加载的黑/白名单集合

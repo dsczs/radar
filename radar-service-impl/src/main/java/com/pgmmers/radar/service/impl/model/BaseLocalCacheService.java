@@ -16,7 +16,7 @@ public abstract class BaseLocalCacheService implements SubscribeHandle {
     protected LoadingCache<Long, Object> localCache = Caffeine
             .newBuilder()
             .maximumSize(64)
-            .expireAfterAccess(Duration.ofHours(1))
+            .expireAfterAccess(Duration.ofSeconds(1))
             .build(this::query);
 
     public Object query(Long key) {

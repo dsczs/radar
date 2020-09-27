@@ -57,7 +57,7 @@ public class KafkaReceiver {
      * @param jsonInfo
      */
     private void invokeEngine(String jsonInfo) {
-        String modelGuid = "DB8A078F-97FE-4A7F-AAC0-5AF1A6C36CE8";
+        String modelGuid = "B072B7EE-FD6C-4C5E-B723-4F128CA8735B";
         String reqId = System.currentTimeMillis() + "";
         HttpHeaders headers = new HttpHeaders();
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -85,7 +85,7 @@ public class KafkaReceiver {
                     "        \"deviceId\": \"SDKSKDSLD-ASDFA-32348235\", \"os\":\"ios\",\"amount\":500.0,\n" +
                     "        \"channel\":\"alipay\"\n" +
                     "        } ";
-            for (int i = 1; i <= 10; i++) {
+            for (int i = 1; i <= 20; i++) {
                 eventId = 1000 + i;
                 Long eventTime = System.currentTimeMillis() - 1000000;
                 String jsonInfo = jsonInfoTemp.replace("#eventId#", String.valueOf(eventId)).replace("#evnetTime#", eventTime.toString());
